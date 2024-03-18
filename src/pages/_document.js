@@ -1,15 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import Navbar from '@/components/navbar'
 import { DocumentHeadTags, documentGetInitialProps } from '@mui/material-nextjs/v14-pagesRouter'
 import theme from '@/theme'
-import { styled } from '@mui/material/styles';
-import { Container } from '@mui/material';
-
-const MainBody = styled(Container)(() => ({
-  maxWidth: '1440px !important',
-  minHeight: 'calc(100vh - 10rem)',
-  padding: '1.5rem',
-}))
 
 export default function MyDocument(props) {
   return (
@@ -21,10 +12,7 @@ export default function MyDocument(props) {
         <DocumentHeadTags {...props} />
       </Head>
       <body>
-        <Navbar />
-        <MainBody>
-          <Main />
-        </MainBody>
+        <Main />
         <NextScript />
       </body>
     </Html>
