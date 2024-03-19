@@ -1,8 +1,14 @@
-import { Poppins } from 'next/font/google'
+import { Marcellus, Poppins } from 'next/font/google'
 import { createTheme } from '@mui/material/styles'
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const marcellus = Marcellus({
+  weight: ['400'],
   subsets: ['latin'],
   display: 'swap',
 })
@@ -15,7 +21,7 @@ const theme = createTheme({
       dark: 'rgba(47, 43, 61, 0.78)',
     },
     secondary: {
-      main: '#B6BBC4',
+      main: '#fff',
       light: '#DCF2F1',
       dark: '#070F2B',
     },
@@ -45,6 +51,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: poppins.style.fontFamily,
+    marcellus: {
+      fontFamily: marcellus.style.fontFamily,
+    },
   }
 })
 
