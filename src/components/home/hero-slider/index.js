@@ -3,6 +3,7 @@ import { contents } from '@/components/home/hero-slider/hero-slider-data'
 import CustomButton from '@/components/ui/button';
 import { Box, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles';
+import Image from 'next/image';
 
 const StyledHeader = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.marcellus.fontFamily,
@@ -13,7 +14,6 @@ const StyledHeader = styled(Typography)(({ theme }) => ({
 const StyledSliderWrapper = styled(Box)(({ theme }) => ({
   height: 'auto',
   width: '100%',
-  maxHeight: 'calc(100vh + 130px)',
   [theme.breakpoints.down('sm')]: {
     height: '80vh',
     width: 'auto'
@@ -24,8 +24,11 @@ const StyledVideo = styled('video')(({ theme }) => ({
   display: 'flex',
   zIndex: -1,
   width: '100%',
+  objectFit: 'cover',
+  maxHeight: 'calc(100vh + 150px)',
   [theme.breakpoints.down('md')]: {
     height: '100%',
+    maxHeight: '80vh',
     width: 'auto'
   }
 }))
@@ -34,14 +37,56 @@ const StyledTypograpy = styled(Typography)(({ theme }) => ({
   padding: '0 25%',
   letterSpacing: '1px',
   fontWeight: 300,
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     padding: '0 10%'
   }
 }))
 
+const ImagePagingWrapper = styled(Box)(({ theme }) => ({
+  margin: '0 10px',
+  transform: 'translateY(1rem)',
+  border: '6px solid white',
+  [theme.breakpoints.down('md')]: {
+    display: 'none'
+  }
+}))
+
+const heroSliderPaging = (i) => {
+  return (
+    <ImagePagingWrapper className='image-wapper'>
+      <Image
+        width={280}
+        style={{ display: 'flex' }}
+        height={150}
+        alt={`Slider-img-0${i + 1}`}
+        src={`/images/slider-img-0${i + 1}.png`} />
+      <SliderOverlay sx={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', }} className='overlay' />
+    </ImagePagingWrapper>
+  )
+}
+
+const StyledSliderDots = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('md')]: {
+    '& .slick-active .overlay': {
+      display: 'none'
+    },
+  },
+  '& .slick-active .image-wapper': {
+    display: 'inline-block'
+  }
+}))
+
+const heroSliderDots = (dots) => {
+  return (
+    <StyledSliderDots>
+      {dots}
+    </StyledSliderDots>
+  )
+}
+
 const HeroSlider = () => {
   return (
-    <FadeSlider>
+    <FadeSlider paging={heroSliderPaging} customDots={heroSliderDots}>
       {contents.map(media =>
         <StyledSliderWrapper key={media.id} sx={{ position: 'relative' }}>
           <StyledVideo autoPlay loop muted>

@@ -1,14 +1,13 @@
-import { Box } from '@mui/material'
-import { styled } from '@mui/material/styles';
-
-const StyledBox = styled(Box)(({ theme }) => ({
-  minHeight: '100vh',
-  paddingTop: '6rem',
-}))
+import { PagesWrapper } from '..'
+import { HeaderTitle } from '@/components/section-header'
+import PageHeader from './../../components/page-header/index'
 
 const AboutUs = () => {
   return (
-    <StyledBox>AboutUs</StyledBox>
+    <PagesWrapper>
+      <PageHeader>about us</PageHeader>
+      <HeaderTitle sx={{ mt: 15, color: 'text.disabled' }}>Comming soon...</HeaderTitle>
+    </PagesWrapper>
   )
 }
 

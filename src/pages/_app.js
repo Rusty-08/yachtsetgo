@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { AppCacheProvider } from '@mui/material-nextjs/v14-pagesRouter'
 import theme from '@/theme'
 import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 
 export default function MyApp(props) {
   const { Component, pageProps } = props
@@ -18,6 +19,7 @@ export default function MyApp(props) {
         <CssBaseline />
         <Navbar />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </AppCacheProvider>
   )

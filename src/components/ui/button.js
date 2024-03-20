@@ -15,6 +15,9 @@ const StyledButtton = styled(Button)(({ theme }) => ({
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.primary.main,
     boxShadow: 'none',
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '0.8rem 2rem !important',
   }
 }))
 

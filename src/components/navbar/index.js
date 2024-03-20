@@ -138,7 +138,13 @@ const Navbar = () => {
               </StyleLink>
             ))}
             <CustomButton
-              color={isScrolling ? 'dark' : 'light'}
+              color={
+                activePage == '/'
+                  ? isScrolling
+                    ? 'dark'
+                    : 'light'
+                  : 'dark'
+              }
               variant="contained"
             >
               Sign In

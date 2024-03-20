@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material'
+import { Box, IconButton, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -71,45 +71,25 @@ function CustomPrevArrow(props) {
   )
 }
 
-const ImagePagingWrapper = styled(Box)(({ theme }) => ({
-  margin: '0 10px',
-  transform: 'translateY(1rem)',
-  border: '6px solid white',
-  [theme.breakpoints.down('md')]: {
-    display: 'none'
-  }
-}))
+export const DefaultPaging = () => {
+  return (
+    <Box sx={{ border: '1px solid red' }}>
+      <IconButton sx={{ width: '2rem', height: '2rem' }}>
+        <Icon icon="mdi:dot" width='2em' />
+      </IconButton>
+    </Box>
+  )
+}
 
-function FadeSlider({ children }) {
-  const theme = useTheme()
-
+function FadeSlider({ children, paging, customDots, AddedSettings, ...props }) {
   const settings = {
     customPaging: function (i) {
       return (
-        <ImagePagingWrapper className='image-wapper'>
-          <Image
-            width={280}
-            style={{ display: 'flex' }}
-            height={150}
-            alt={`Slider-img-0${i + 1}`}
-            src={`/images/slider-img-0${i + 1}.png`} />
-          <SliderOverlay sx={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', }} className='overlay' />
-        </ImagePagingWrapper>
+        <Box>{!paging ? <DefaultPaging /> : paging(i)}</Box>
       )
     },
     appendDots: dots => (
-      <Box sx={{
-        [theme.breakpoints.up('md')]: {
-          '& .slick-active .overlay': {
-            display: 'none'
-          },
-        },
-        '& .slick-active .image-wapper': {
-          display: 'inline-block'
-        }
-      }}>
-        {dots}
-      </Box>
+      customDots ? customDots(dots) : <Box>{dots}</Box>
     ),
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
@@ -121,10 +101,13 @@ function FadeSlider({ children }) {
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    ...AddedSettings
   }
 
   return (
-    <Box className="slider-container">
+    <Box className="slider-container" {...props}>
       <Slider {...settings}>
         {children}
       </Slider>
