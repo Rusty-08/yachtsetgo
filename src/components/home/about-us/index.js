@@ -6,7 +6,8 @@ import CustomButton from '@/components/ui/button';
 import { Header, HeaderTitle, SectionHeader } from '@/components/section-header';
 import FadeSlider, { SliderOverlay } from '@/components/carousel';
 import Image from 'next/image';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
+import { SectionWrapper } from '../hero-slider';
 
 const aboutTheFirmPaging = (i) => {
   return (
@@ -28,16 +29,11 @@ const aboutTheFirmDots = (dots) => {
   )
 }
 
-const AboutTheFirmWraper = styled(Box)(({ theme }) => ({
-  padding: '7rem 2rem',
-  [theme.breakpoints.down('sm')]: {
-    padding: '5rem 1rem',
-  }
-}))
-
 const AboutTheFirm = () => {
+  const theme = useTheme()
+
   return (
-    <AboutTheFirmWraper>
+    <SectionWrapper sx={{ pt: '7rem', [theme.breakpoints.down('sm')]: { px: 2 } }}>
       <Grid container columnSpacing={{ md: 4 }} rowSpacing={{ xs: 10, md: 4 }}>
         <Grid item xs={12} md={6}>
           <Header subHeader='About The Firm'>FANTASTIC SERVICES PROVIDED BY YACHT</Header>
@@ -78,7 +74,7 @@ const AboutTheFirm = () => {
                       style={{ maxWidth: '100%', maxHeight: '80%', objectFit: 'cover' }} />
                     <SliderOverlay sx={{ bgcolor: 'transparent', justifyContent: 'flex-end', p: 0 }}>
                       <Box sx={{ height: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <HeaderTitle sx={{ fontSize: '1.2rem', color: 'secondary.dark' }}>
+                        <HeaderTitle sx={{ fontSize: '1.2rem', color: 'secondary.dark', textAlign: 'center' }}>
                           {media.title}
                         </HeaderTitle>
                       </Box>
@@ -103,7 +99,7 @@ const AboutTheFirm = () => {
                   {testimonials.map(testimonial => (
                     <Box key={testimonial.user} sx={{ height: '14rem', width: '100%', position: 'relative' }}>
                       <SliderOverlay
-                        sx={{ bgcolor: 'rgba(0, 0, 0, 0.6)', px: 2, cursor: 'grab' }}
+                        sx={{ bgcolor: 'rgba(7, 15, 43, 0.5)', px: 2, cursor: 'grab' }}
                       >
                         <Typography style={{ lineHeight: 1.6, letterSpacing: '1px' }}>
                           {'❝'}{testimonial.message}{'❞'}
@@ -128,7 +124,7 @@ const AboutTheFirm = () => {
           </Grid>
         </Grid>
       </Grid>
-    </AboutTheFirmWraper>
+    </SectionWrapper>
   )
 }
 

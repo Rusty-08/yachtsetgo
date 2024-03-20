@@ -17,7 +17,8 @@ const StyledButtton = styled(Button)(({ theme }) => ({
     boxShadow: 'none',
   },
   [theme.breakpoints.down('sm')]: {
-    padding: '0.8rem 2rem !important',
+    padding: '0.7rem 1.5rem !important',
+    whiteSpace: 'nowrap',
   }
 }))
 

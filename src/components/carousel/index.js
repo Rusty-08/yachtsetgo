@@ -52,21 +52,21 @@ const RightArrow = styled(SliderArrow)(({ theme }) => ({
 }))
 
 function CustomNextArrow(props) {
-  const { onClick } = props;
+  const { onClick, sx } = props;
   return (
-    <RightArrow onClick={onClick}>
-      <Typography sx={{ fontSize: '0.9rem', }}>Next</Typography>
+    <RightArrow sx={sx} onClick={onClick}>
+      <Typography sx={{ fontSize: '0.9rem', letterSpacing: '2px' }}>Next</Typography>
       <Icon icon="heroicons:arrow-long-right-solid" width="1.8rem" />
     </RightArrow>
   )
 }
 
 function CustomPrevArrow(props) {
-  const { onClick } = props;
+  const { onClick, sx } = props;
   return (
-    <LeftArrow onClick={onClick}>
+    <LeftArrow sx={sx} onClick={onClick}>
       <Icon icon="heroicons:arrow-long-left-solid" width="1.8rem" />
-      <Typography sx={{ fontSize: '0.9rem', }}>Prev</Typography>
+      <Typography sx={{ fontSize: '0.9rem', letterSpacing: '2px' }}>Prev</Typography>
     </LeftArrow>
   )
 }
@@ -81,7 +81,15 @@ export const DefaultPaging = () => {
   )
 }
 
-function FadeSlider({ children, paging, customDots, AddedSettings, ...props }) {
+function FadeSlider({
+  children,
+  prevArrowStyles,
+  nextArrowStyles,
+  paging,
+  customDots,
+  AddedSettings,
+  ...props
+}) {
   const settings = {
     customPaging: function (i) {
       return (
@@ -91,8 +99,8 @@ function FadeSlider({ children, paging, customDots, AddedSettings, ...props }) {
     appendDots: dots => (
       customDots ? customDots(dots) : <Box>{dots}</Box>
     ),
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow sx={nextArrowStyles} />,
+    prevArrow: <CustomPrevArrow sx={prevArrowStyles} />,
     dots: true,
     fade: true,
     dotsClass: "slick-dots slick-thumb",
@@ -107,7 +115,7 @@ function FadeSlider({ children, paging, customDots, AddedSettings, ...props }) {
   }
 
   return (
-    <Box className="slider-container" {...props}>
+    <Box sx={{ maxWidth: '100%', position: 'relative' }} className="slider-container" {...props}>
       <Slider {...settings}>
         {children}
       </Slider>

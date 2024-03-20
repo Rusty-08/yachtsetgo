@@ -6,13 +6,13 @@ export const HeaderTitle = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.marcellus.fontFamily,
   textTransform: 'uppercase',
   letterSpacing: '3px',
+  textAlign: 'start',
 }))
 
 export const SectionHeader = styled(HeaderTitle)(({ theme }) => ({
   letterSpacing: '0.5rem',
   fontSize: 'clamp(1.3rem, 4vw, 2.8rem)',
   lineHeight: 1.3,
-  color: theme.palette.secondary.dark
 }))
 
 export const PageHeaderTitle = styled(SectionHeader)(({ theme }) => ({
@@ -20,19 +20,39 @@ export const PageHeaderTitle = styled(SectionHeader)(({ theme }) => ({
   fontSize: 'clamp(2rem, 5vw, 3.5rem)',
 }))
 
-export const Header = ({ subHeader, children, ...props }) => {
+const StyledHeader = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  gap: '1rem',
+  flexDirection: 'column',
+  maxWidth: '75vw',
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%',
+  }
+}))
+
+export const Header = ({ subHeader, color = 'dark', children, ...props }) => {
   return (
-    <Box sx={{ display: 'flex', gap: 1.5, flexDirection: 'column' }} {...props}>
-      <Box sx={{ display: 'flex', color: 'secondary.dark', alignItems: 'center', gap: 1.5 }}>
+    <StyledHeader {...props}>
+      <Box sx={{
+        display: 'flex',
+        color: color !== 'light' ? 'secondary.dark' : 'primary.light',
+        alignItems: 'center',
+        gap: 1.5
+      }}>
         <Icon icon="ion:boat-sharp" />
         <Typography
-          sx={{ lineHeight: '1rem', fontSize: '0.8rem', letterSpacing: '1px' }}
+          sx={{ lineHeight: '1rem', fontSize: '0.8rem', letterSpacing: '2px' }}
           variant='overline'
         >
           {subHeader}
         </Typography>
       </Box>
-      <SectionHeader variant='h3'>{children}</SectionHeader>
-    </Box>
+      <SectionHeader
+        variant='h3'
+        sx={{ color: color !== 'light' ? 'secondary.dark' : 'primary.light' }}
+      >
+        {children}
+      </SectionHeader>
+    </StyledHeader>
   )
 }

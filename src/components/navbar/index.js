@@ -17,7 +17,7 @@ const StyleLink = styled(Link)(({ theme }) => ({
 }))
 
 const MainAppBar = styled(AppBar)(({ theme }) => ({
-  padding: '0 1rem',
+  padding: '0 0.5rem',
   transition: 'transform 0.3s ease-in-out',
   [theme.breakpoints.down('sm')]: {
     padding: '0 0.5rem',
@@ -95,8 +95,9 @@ const Navbar = () => {
             color="inherit"
             aria-label="menu"
             onClick={handleMenuOpen}
+            sx={{ color: isScrolling || activePage !== '/' ? 'primary.dark' : 'primary.light' }}
           >
-            <Icon icon="solar:hamburger-menu-line-duotone" width="2rem" />
+            <Icon icon="solar:hamburger-menu-broken" width="2rem" />
           </IconButton>
           <Menu
             anchorEl={anchorEl}

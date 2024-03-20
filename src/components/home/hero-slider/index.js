@@ -1,9 +1,16 @@
 import FadeSlider, { SliderOverlay } from '@/components/carousel'
-import { contents } from '@/components/home/hero-slider/hero-slider-data'
+import { contents } from '@/components/home/hero-slider/dummy-data'
 import CustomButton from '@/components/ui/button';
 import { Box, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles';
 import Image from 'next/image';
+
+export const SectionWrapper = styled(Box)(({ theme }) => ({
+  padding: '4rem 2rem',
+  [theme.breakpoints.down('sm')]: {
+    padding: '5rem 0rem',
+  }
+}))
 
 const StyledHeader = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.marcellus.fontFamily,
