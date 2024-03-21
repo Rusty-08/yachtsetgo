@@ -67,7 +67,7 @@ const heroSliderPaging = (i) => {
         style={{ display: 'flex' }}
         height={150}
         alt={`Slider-img-0${i + 1}`}
-        src={`/images/slider-img-0${i + 1}.png`} />
+        src={`/landingassets/images/slider-img-0${i + 1}.png`} />
       <SliderOverlay sx={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', }} className='overlay' />
     </ImagePagingWrapper>
   )

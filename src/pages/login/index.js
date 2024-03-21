@@ -26,9 +26,9 @@ const Login = () => {
         <StyledLoginWrapper>
           <HeaderTitle variant='h5' sx={{ mb: '1rem', color: 'secondary.dark' }}>Login</HeaderTitle>
           <InputLabel htmlFor="username" sx={{ fontSize: '0.9rem' }}>Username</InputLabel>
-          <OutlinedInput id="username" sx={{ mb: '1rem', borderRadius: 0 }} />
+          <OutlinedInput id="username" sx={{ mb: '1rem', borderRadius: 0, input: { height: '1rem' } }} />
           <InputLabel htmlFor="password" sx={{ fontSize: '0.9rem' }}>Password</InputLabel>
-          <OutlinedInput id="password" type="password" sx={{ mb: '1.5rem', borderRadius: 0 }} />
+          <OutlinedInput id="password" type="password" sx={{ mb: '1.5rem', borderRadius: 0, input: { height: '1rem' } }} />
           <CustomButton color='dark' variant='contained'>LOGIN</CustomButton>
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
             <StyledLink href='/login' sx={{ color: 'primary.main', fontSize: '0.9rem' }}>
