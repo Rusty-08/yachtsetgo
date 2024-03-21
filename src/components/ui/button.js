@@ -30,13 +30,13 @@ const CustomButton = ({ color = 'light', children, ...props }) => {
       '&:hover': {
         bgcolor:
           props.variant !== 'text'
-            ? color && color === 'dark'
+            ? color && color !== 'light'
               ? theme.palette.secondary.dark
               : theme.palette.primary.light
             : 'transparent',
         color:
           props.variant !== 'text'
-            ? color && color === 'dark'
+            ? color && color !== 'light'
               ? theme.palette.primary.light
               : theme.palette.primary.main
             : theme.palette.primary.main

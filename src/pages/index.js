@@ -14,6 +14,9 @@ export const PagesWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-start',
   flexDirection: 'column',
+  [theme.breakpoints.down('sm')]: {
+    paddingTop: '4rem',
+  }
 }))
 
 const Home = () => {

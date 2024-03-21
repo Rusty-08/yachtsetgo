@@ -14,9 +14,9 @@ const StyledImage = styled(Image)(({ theme }) => ({
   }
 }))
 
-export const CustomImage = ({ src, alt }) => {
+export const CustomImage = ({ src, alt, ...props }) => {
   return (
-    <Box sx={{ width: '100%', height: '100%', overflow: 'hidden', cursor: 'pointer' }}>
+    <Box sx={{ width: '100%', height: '100%', overflow: 'hidden', cursor: 'pointer' }} {...props}>
       <StyledImage
         src={src}
         alt={alt ?? ''}

@@ -4,7 +4,7 @@ export const services = [
     name: 'Gourmet Dining Experience'
   },
   {
-    icon: 'icon-park-twotone:box',
+    icon: 'icon-park-twotone:sleep-two',
     name: 'Luxury Accommodation'
   },
   {
@@ -16,7 +16,7 @@ export const services = [
     name: 'Personalized Concierge'
   },
   {
-    icon: 'icon-park-twotone:plan',
+    icon: 'ic:twotone-people',
     name: 'Professional Crew and Staff'
   },
   {
@@ -29,17 +29,17 @@ export const hightlights = [
   {
     id: 1,
     title: 'Onboard Dining Experiences',
-    image: '/images/dining.jpg',
+    image: '/landingassets/images/dining.jpg',
   },
   {
     id: 2,
     title: 'Luxury Onboard Dining Experiences',
-    image: '/images/seat.jpg',
+    image: '/landingassets/images/seat.jpg',
   },
   {
     id: 3,
     title: 'Comportable Cushion Seats',
-    image: '/images/views.jpg',
+    image: '/landingassets/images/views.jpg',
   },
 ]
 

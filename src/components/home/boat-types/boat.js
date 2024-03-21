@@ -22,12 +22,13 @@ const StyledBoatWrapper = styled(Box)(({ theme }) => ({
   textAlign: 'start',
   padding: '2rem',
   height: '25rem',
-  borderRight: '1px solid rgba(255,255,255,0.3)',
+  borderRight: '1px solid rgba(255, 255, 255, 0.3)',
   [theme.breakpoints.down('sm')]: {
     backgroundColor: 'rgba(0, 156, 194, 0.1)'
   },
   '&:hover': {
-    backgroundColor: 'rgba(0, 156, 194, 0.1)'
+    // backgroundColor: 'rgba(0, 156, 194, 0.1)'
+    backgroundColor: 'rgba(255, 255, 255, 0.1)'
   }
 }))
 

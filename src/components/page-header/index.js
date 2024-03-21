@@ -12,6 +12,13 @@ const StyledPageName = styled(Typography)(({ theme }) => ({
   fontSize: '0.9rem'
 }))
 
+const HeaderTitle = styled(PageHeaderTitle)(({ theme }) => ({
+  marginTop: '1rem',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.7rem',
+  }
+}))
+
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
   color: theme.palette.primary.light,
@@ -20,9 +27,18 @@ const StyledLink = styled(Link)(({ theme }) => ({
   }
 }))
 
+const PageHeaderWrapper = styled(Box)(({ theme }) => ({
+  height: '17rem',
+  width: '100%',
+  position: 'relative',
+  [theme.breakpoints.down('sm')]: {
+    height: '12rem',
+  }
+}))
+
 const PageHeader = ({ children }) => {
   return (
-    <Box sx={{ height: '17rem', width: '100%', position: 'relative' }}>
+    <PageHeaderWrapper>
       <Image
         src='/images/yacht-landscape.jpg'
         alt=''
@@ -31,7 +47,7 @@ const PageHeader = ({ children }) => {
         sizes="100vw"
         style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       <SliderOverlay>
-        <PageHeaderTitle sx={{ mt: 2 }}>{children}</PageHeaderTitle>
+        <HeaderTitle>{children}</HeaderTitle>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <StyledLink href="/">
             <StyledPageName>home</StyledPageName>
@@ -40,7 +56,7 @@ const PageHeader = ({ children }) => {
           <StyledPageName>{children}</StyledPageName>
         </Box>
       </SliderOverlay>
-    </Box>
+    </PageHeaderWrapper>
   )
 }
 

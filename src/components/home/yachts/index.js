@@ -1,6 +1,5 @@
 import React from 'react'
 import { SectionWrapper } from '../hero-slider'
-import Image from 'next/image'
 import FadeSlider, { SliderOverlay } from '@/components/carousel'
 import { Box, useMediaQuery, useTheme } from '@mui/material'
 import { Header } from '@/components/section-header'
@@ -34,13 +33,6 @@ const Yachts = () => {
   return (
     <SectionWrapper sx={{ px: 0, [theme.breakpoints.down('sm')]: { px: 0 } }}>
       <Box sx={{ position: 'relative', display: 'flex', height: '50rem' }}>
-        {/* <Image
-          src='/images/slider-img-03.png'
-          alt=''
-          width="0"
-          height="0"
-          sizes="100vw"
-          style={{ width: '100%', height: '50rem', objectFit: 'cover' }} /> */}
         <SliderOverlay
           sx={{
             justifyContent: 'flex-start',
@@ -48,7 +40,7 @@ const Yachts = () => {
             py: 12,
             bgcolor: 'rgba(0, 156, 194, 0.1)',
             gap: 4,
-            px: isMobile ? 0 : 3
+            px: isMobile ? 0 : 3,
           }}
         >
           <Header
@@ -70,6 +62,7 @@ const Yachts = () => {
               right: '3rem',
               color: 'secondary.dark'
             }}
+            style={{ height: '100%', width: '100%' }}
             AddedSettings={sliderAddedSettings}
           >
             {yachts.map(yacht => (

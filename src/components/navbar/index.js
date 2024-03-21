@@ -1,4 +1,4 @@
-import { AppBar, Box, Hidden, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
+import { AppBar, Box, Divider, Drawer, Hidden, IconButton, Menu, MenuItem, Toolbar, useMediaQuery } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { links } from './links'
@@ -32,15 +32,11 @@ const Navbar = () => {
   const [lastY, setLastY] = useState(y)
   const [hideOnScroll, setHideOnScroll] = useState(true)
 
-  const [anchorEl, setAnchorEl] = useState(null)
+  const [open, setOpen] = useState(false);
 
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleMenuClose = () => {
-    setAnchorEl(null)
-  }
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen)
+  };
 
   const navbarHeight = navbarRef.current?.offsetHeight
   const isScrolling = y > navbarHeight
@@ -55,6 +51,59 @@ const Navbar = () => {
       setHideOnScroll(true)
     }
   }, [lastY, navbarHeight, y])
+
+  const isMobile = useMediaQuery(theme => theme.breakpoints.down('sm'))
+
+  const linkLists = (direction, color) => {
+    return (
+      <Box sx={{
+        display: 'flex',
+        gap: 3,
+        alignItems: 'center',
+        py: direction ? 4 : 0,
+        flexDirection: direction ?? 'row'
+      }}
+      >
+        {links.map(link => (
+          <StyleLink
+            style={{
+              color: // spagetthi pababa haha
+                color
+                  ? activePage == link.route
+                    ? 'rgb(0, 156, 194)'
+                    : 'rgba(47, 43, 61, 0.62)'
+                  : activePage == link.route
+                    ? isScrolling
+                      ? 'rgb(0, 156, 194)'
+                      : activePage == '/'
+                        ? 'white'
+                        : 'rgb(0, 156, 194)'
+                    : activePage == '/'
+                      ? isScrolling
+                        ? 'rgba(47, 43, 61, 0.62)'
+                        : 'rgba(255, 255, 255, 0.60)'
+                      : 'rgba(47, 43, 61, 0.60)',
+            }}
+            key={link.id}
+            href={link.route}
+          >
+            {link.name}
+          </StyleLink>
+        ))}
+        <CustomButton
+          color={
+            activePage == '/'
+              ? isScrolling ? 'dark' : 'light'
+              : 'dark'
+          }
+          variant="contained"
+          onClick={() => router.push('/login')}
+        >
+          LOGIN
+        </CustomButton>
+      </Box>
+    )
+  }
 
   return (
     <MainAppBar
@@ -71,20 +120,22 @@ const Navbar = () => {
             ? 'rgba(0, 0, 0, 0.05) 0px 1px 3px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px'
             : 'none',
       }}>
-      <Toolbar sx={{ height: '5.5rem', justifyContent: 'space-between' }}>
+      <Toolbar sx={{ height: isMobile ? '4rem' : '5.5rem', justifyContent: 'space-between' }}>
         <Link href="/">
           <Image
             src={
               activePage === '/'
                 ? isScrolling
-                  ? "/images/ysgcolored.svg"
-                  : "/images/ysgwhite.svg"
-                : "/images/ysgcolored.svg"
+                  ? "/landingassets/images/ysgcolored.svg"
+                  : "/landingassets/images/ysgwhite.svg"
+                : "/landingassets/images/ysgcolored.svg"
             }
             alt="Yachtsetgo Logo"
-            width={200}
-            height={60}
+            width='0'
+            height='0'
             style={{
+              width: 'auto',
+              height: isMobile ? '2rem' : '3.5rem',
               objectFit: 'cover',
             }} />
         </Link>
@@ -95,65 +146,49 @@ const Navbar = () => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={handleMenuOpen}
+            onClick={toggleDrawer(true)}
             sx={{ color: isScrolling || activePage !== '/' ? 'primary.dark' : 'primary.light' }}
           >
             <Icon icon="solar:hamburger-menu-broken" width="2rem" />
           </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-          >
-            {links.map(link => (
-              <MenuItem onClick={handleMenuClose} key={link.id}>
-                <StyleLink href={link.route}>
-                  {link.name}
-                </StyleLink>
-              </MenuItem>
-            ))}
-          </Menu>
+          <Drawer anchor='right' open={open} onClose={toggleDrawer(false)}>
+            <Box
+              sx={{
+                width: 300,
+                pb: 4,
+                pt: 2,
+                px: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              role="presentation"
+              onClick={toggleDrawer(false)}
+            >
+              <Image
+                src='/landingassets/images/ysgcolored.svg'
+                alt='Yachtsetgo Logo'
+                width='0'
+                height='0'
+                style={{
+                  width: 'auto',
+                  height: '2.5rem',
+                  objectFit: 'cover',
+                  marginBottom: '1rem',
+                }} />
+              <Divider sx={{ width: '100%' }} />
+              {linkLists('column', 'colored')}
+            </Box>
+          </Drawer>
         </Hidden>
+
         {/* Large Screens */}
         <Hidden mdDown>
-          <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
-            {links.map(link => (
-              <StyleLink
-                style={{
-                  color:
-                    activePage == link.route
-                      ? isScrolling
-                        ? 'rgb(0, 156, 194)'
-                        : activePage == '/'
-                          ? 'white'
-                          : 'rgb(0, 156, 194)'
-                      : activePage == '/'
-                        ? isScrolling
-                          ? 'rgba(47, 43, 61, 0.62)'
-                          : 'rgba(255, 255, 255, 0.60)'
-                        : 'rgba(47, 43, 61, 0.60)',
-                }}
-                key={link.id}
-                href={link.route}
-              >
-                {link.name}
-              </StyleLink>
-            ))}
-            <CustomButton
-              color={
-                activePage == '/'
-                  ? isScrolling ? 'dark' : 'light'
-                  : 'dark'
-              }
-              variant="contained"
-              onClick={() => router.push('/login')}
-            >
-              Sign In
-            </CustomButton>
-          </Box>
+          {linkLists()}
         </Hidden>
       </Toolbar>
-    </MainAppBar>
+    </MainAppBar >
   )
 }
 

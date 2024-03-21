@@ -25,7 +25,7 @@ const FooterWrapper = styled(Box)(({ theme }) => ({
   }
 }))
 
-const StyledLink = styled(MuiLink)(({ theme }) => ({
+export const StyledLink = styled(MuiLink)(({ theme }) => ({
   display: 'flex',
   gap: '0.7rem',
   textDecoration: 'none',
@@ -83,10 +83,10 @@ const Footer = () => {
         <Grid item xs={12} md={4}>
           <FooterSection title='get the app' direction='row'>
             <MuiLink href='/'>
-              <Image src='/images/google-play-button.svg' alt='play store' width={150} height={50} />
+              <Image src='/landingassets/images/google-play-button.svg' alt='play store' width={150} height={50} />
             </MuiLink>
             <MuiLink href='/'>
-              <Image src='/images/app-store-image.svg' alt='app store' width={150} height={50} />
+              <Image src='/landingassets/images/app-store-image.svg' alt='app store' width={150} height={50} />
             </MuiLink>
           </FooterSection>
         </Grid>
@@ -132,7 +132,7 @@ const Footer = () => {
       <Divider sx={{ width: '100%', bgcolor: 'rgba(255, 255, 255, 0.3)' }} />
       <FlexWraper>
         <Image
-          src='/images/ysgwhite.svg'
+          src='/landingassets/images/ysgwhite.svg'
           alt='Yachtsetgo Logo'
           width={150}
           height={45}

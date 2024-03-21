@@ -2,8 +2,7 @@ import React from 'react'
 import { Box, Typography } from '@mui/material';
 import { HeaderTitle } from '@/components/section-header';
 import CustomButton from '@/components/ui/button';
-import { styled, createTheme } from '@mui/material/styles';
-import Image from 'next/image';
+import { styled } from '@mui/material/styles';
 import { SliderOverlay } from '@/components/carousel';
 import { CustomImage } from '@/components/ui/image';
 

@@ -53,7 +53,7 @@ const AboutTheFirm = () => {
             <CustomButton color='dark' variant='contained'>View More</CustomButton>
             <CustomButton sx={{ gap: 1, color: 'secondary.dark' }} variant='text'>
               Book Your Yacht
-              <Icon icon="heroicons:arrow-long-right-solid" width="1.8rem" />
+              <Icon style={{ flexShrink: 0 }} icon="heroicons:arrow-long-right-solid" width="1.8rem" />
             </CustomButton>
           </Box>
         </Grid>

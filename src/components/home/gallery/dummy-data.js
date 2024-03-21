@@ -28,31 +28,31 @@ export const gellery = [
 export const galleryImages = [
   {
     id: 1,
-    image: '/images/gallery-1.jpg',
+    image: '/landingassets/images/gallery-1.jpg',
     rows: 2,
     cols: 2,
   },
   {
     id: 2,
-    image: '/images/gallery-2.jpg',
+    image: '/landingassets/images/gallery-2.jpg',
   },
   {
     id: 3,
-    image: '/images/gallery-1.jpg',
+    image: '/landingassets/images/gallery-1.jpg',
   },
   {
     id: 4,
-    image: '/images/gallery-2.jpg',
+    image: '/landingassets/images/gallery-2.jpg',
     rows: 2,
     cols: 2,
   },
   {
     id: 5,
-    image: '/images/gallery-1.jpg',
+    image: '/landingassets/images/gallery-1.jpg',
   },
   {
     id: 6,
-    image: '/images/gallery-2.jpg',
+    image: '/landingassets/images/gallery-2.jpg',
   },
 
 ]

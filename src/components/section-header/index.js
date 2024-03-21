@@ -13,6 +13,9 @@ export const SectionHeader = styled(HeaderTitle)(({ theme }) => ({
   letterSpacing: '0.5rem',
   fontSize: 'clamp(1.3rem, 4vw, 2.8rem)',
   lineHeight: 1.3,
+  [theme.breakpoints.down('sm')]: {
+    letterSpacing: '0.3rem',
+  },
 }))
 
 export const PageHeaderTitle = styled(SectionHeader)(({ theme }) => ({

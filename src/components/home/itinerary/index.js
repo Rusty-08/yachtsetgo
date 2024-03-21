@@ -4,8 +4,19 @@ import { SectionWrapper } from '../hero-slider'
 import { Box, ImageList, ImageListItem, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { itirenaries } from './dummy-data'
 import CustomButton from '@/components/ui/button'
-import Image from 'next/image'
 import { CustomImage } from '@/components/ui/image'
+import { styled } from '@mui/material/styles';
+
+const DesciptionWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  gap: '1rem',
+  paddingTop: '1.5rem',
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+  }
+}))
 
 const Itirenary = () => {
   const theme = useTheme()
@@ -25,22 +36,15 @@ const Itirenary = () => {
         {itirenaries.map(itirenary => (
           <ImageListItem key={itirenary.id}>
             <CustomImage src={itirenary.image} />
-            {/* <Image
-              src={itirenary.image}
-              alt=''
-              width="0"
-              height="0"
-              sizes="100vw"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> */}
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 2, pt: 3 }}>
+            <DesciptionWrapper>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <HeaderTitle variant='h5' sx={{ color: 'secondary.dark', mb: 1 }}>{itirenary.title}</HeaderTitle>
+                <HeaderTitle variant='h5' sx={{ color: 'secondary.dark' }}>{itirenary.title}</HeaderTitle>
                 <Typography variant='overline' sx={{ letterSpacing: '1px' }}>
                   {itirenary.locationsCount} locations • {itirenary.activitiesCount} activities
                 </Typography>
               </Box>
-              <CustomButton color='dark' variant='contained'>Details</CustomButton>
-            </Box>
+              <CustomButton color='dark' variant='contained'>View Details</CustomButton>
+            </DesciptionWrapper>
           </ImageListItem>
         ))}
       </ImageList>
