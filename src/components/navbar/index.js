@@ -20,7 +20,7 @@ const MainAppBar = styled(AppBar)(({ theme }) => ({
   padding: '0 0.5rem',
   transition: 'transform 0.3s ease-in-out',
   [theme.breakpoints.down('sm')]: {
-    padding: '0 0.5rem',
+    padding: '0 0.2rem',
   }
 }))
 
@@ -121,7 +121,7 @@ const Navbar = () => {
             : 'none',
       }}>
       <Toolbar sx={{ height: isMobile ? '4rem' : '5.5rem', justifyContent: 'space-between' }}>
-        <Link href="/">
+        <Link href="/" style={{ display: 'flex' }}>
           <Image
             src={
               activePage === '/'
@@ -135,7 +135,7 @@ const Navbar = () => {
             height='0'
             style={{
               width: 'auto',
-              height: isMobile ? '2rem' : '3.5rem',
+              height: isMobile ? '2.5rem' : '3.5rem',
               objectFit: 'cover',
             }} />
         </Link>
@@ -156,7 +156,7 @@ const Navbar = () => {
               sx={{
                 width: 300,
                 pb: 4,
-                pt: 2,
+                pt: '0.75rem',
                 px: 2,
                 display: 'flex',
                 flexDirection: 'column',
@@ -175,7 +175,7 @@ const Navbar = () => {
                   width: 'auto',
                   height: '2.5rem',
                   objectFit: 'cover',
-                  marginBottom: '1rem',
+                  marginBottom: '0.75rem',
                 }} />
               <Divider sx={{ width: '100%' }} />
               {linkLists('column', 'colored')}

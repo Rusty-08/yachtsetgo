@@ -40,7 +40,7 @@ const PageHeader = ({ children }) => {
   return (
     <PageHeaderWrapper>
       <Image
-        src='/images/yacht-landscape.jpg'
+        src='/landingassets/images/yacht-landscape.jpg'
         alt=''
         width="0"
         height="0"

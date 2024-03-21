@@ -34,7 +34,7 @@ const BoatTypes = () => {
     <SectionWrapper sx={{ px: 0 }}>
       <Box sx={{ position: 'relative', display: 'flex' }}>
         <Image
-          src='/images/slider-img-03.png'
+          src='/landingassets/images/slider-img-03.png'
           alt=''
           width="0"
           height="0"

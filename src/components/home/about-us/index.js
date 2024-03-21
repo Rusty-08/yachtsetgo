@@ -86,7 +86,7 @@ const AboutTheFirm = () => {
             <Grid item xs={12} sm={6} md={6}>
               <Box sx={{ height: '34rem', position: 'relative', maxWidth: '100%' }}>
                 <Image
-                  src='/images/yacht-portrait.jpg'
+                  src='/landingassets/images/yacht-portrait.jpg'
                   alt=''
                   width="0"
                   height="0"
