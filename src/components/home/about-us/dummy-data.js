@@ -1,27 +1,27 @@
 export const services = [
   {
     icon: 'ic:twotone-dinner-dining',
-    name: 'Luxury Onboard Dining Experiences'
+    name: 'Gourmet Dining Experience'
   },
   {
     icon: 'icon-park-twotone:box',
-    name: 'Personalized Yacht Charter Packages'
+    name: 'Luxury Accommodation'
   },
   {
     icon: 'icon-park-twotone:waterpolo-one',
-    name: 'Exclusive Water Sports Activities'
+    name: 'Water Sports and Recreation'
   },
   {
     icon: 'ic:twotone-room-service',
-    name: 'Professional Crew and Concierge Services'
+    name: 'Personalized Concierge'
   },
   {
     icon: 'icon-park-twotone:plan',
-    name: 'Provides Customized Itinerary Planning'
+    name: 'Professional Crew and Staff'
   },
   {
     icon: 'icon-park-twotone:entertainment',
-    name: 'State-of-the-Art Entertainment Systems'
+    name: 'Entertainment and Relaxation'
   },
 ]
 

@@ -33,10 +33,10 @@ const AboutTheFirm = () => {
   const theme = useTheme()
 
   return (
-    <SectionWrapper sx={{ pt: '7rem', [theme.breakpoints.down('sm')]: { px: 2 } }}>
+    <SectionWrapper sx={{ pt: '7rem', [theme.breakpoints.down('sm')]: { px: 2, pt: '5rem' } }}>
       <Grid container columnSpacing={{ md: 4 }} rowSpacing={{ xs: 10, md: 4 }}>
         <Grid item xs={12} md={6}>
-          <Header subHeader='About The Firm'>FANTASTIC SERVICES PROVIDED BY YACHT</Header>
+          <Header subHeader='About The Firm' style={{ paddingBottom: '0' }}>FANTASTIC SERVICES PROVIDED BY YACHT</Header>
           <Grid sx={{ mt: 2 }} container spacing={2}>
             {services.map((service, index) => (
               <Grid key={index} item xs={12} sm={6} md={6}>

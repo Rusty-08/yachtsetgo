@@ -24,22 +24,28 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   display: 'flex',
   gap: '1rem',
   flexDirection: 'column',
-  maxWidth: '75vw',
   [theme.breakpoints.down('sm')]: {
     maxWidth: '100%',
-  }
+  },
+  paddingBottom: '2rem'
 }))
 
-export const Header = ({ subHeader, color = 'dark', children, ...props }) => {
+export const Header = ({ subHeader, position = 'flex-start', color = 'dark', children, ...props }) => {
   return (
-    <StyledHeader {...props}>
+    <StyledHeader
+      sx={{
+        alignItems: position,
+        maxWidth: position == 'flex-start' ? '75vw' : '100%',
+      }}
+      {...props}
+    >
       <Box sx={{
         display: 'flex',
         color: color !== 'light' ? 'secondary.dark' : 'primary.light',
         alignItems: 'center',
         gap: 1.5
       }}>
-        <Icon icon="ion:boat-sharp" />
+        {position == 'flex-start' && <Icon icon="ion:boat-sharp" />}
         <Typography
           sx={{ lineHeight: '1rem', fontSize: '0.8rem', letterSpacing: '2px' }}
           variant='overline'
@@ -49,7 +55,10 @@ export const Header = ({ subHeader, color = 'dark', children, ...props }) => {
       </Box>
       <SectionHeader
         variant='h3'
-        sx={{ color: color !== 'light' ? 'secondary.dark' : 'primary.light' }}
+        sx={{
+          color: color !== 'light' ? 'secondary.dark' : 'primary.light',
+          textAlign: position == 'flex-start' ? 'start' : 'center',
+        }}
       >
         {children}
       </SectionHeader>

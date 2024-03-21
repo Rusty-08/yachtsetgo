@@ -105,7 +105,7 @@ function FadeSlider({
     fade: true,
     dotsClass: "slick-dots slick-thumb",
     infinite: true,
-    speed: 500,
+    speed: 300,
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,

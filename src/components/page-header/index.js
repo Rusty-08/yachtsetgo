@@ -32,7 +32,7 @@ const PageHeader = ({ children }) => {
         style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       <SliderOverlay>
         <PageHeaderTitle sx={{ mt: 2 }}>{children}</PageHeaderTitle>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <StyledLink href="/">
             <StyledPageName>home</StyledPageName>
           </StyledLink>

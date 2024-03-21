@@ -6,9 +6,11 @@ import { styled } from '@mui/material/styles';
 import Image from 'next/image';
 
 export const SectionWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
   padding: '4rem 2rem',
   [theme.breakpoints.down('sm')]: {
-    padding: '5rem 0rem',
+    padding: '3rem 0rem',
   }
 }))
 
@@ -22,7 +24,7 @@ const StyledSliderWrapper = styled(Box)(({ theme }) => ({
   height: 'auto',
   width: '100%',
   [theme.breakpoints.down('sm')]: {
-    height: '80vh',
+    height: '100vh',
     width: 'auto'
   }
 }))
@@ -34,8 +36,7 @@ const StyledVideo = styled('video')(({ theme }) => ({
   objectFit: 'cover',
   maxHeight: 'calc(100vh + 150px)',
   [theme.breakpoints.down('md')]: {
-    height: '100%',
-    maxHeight: '80vh',
+    height: '100vh',
     width: 'auto'
   }
 }))

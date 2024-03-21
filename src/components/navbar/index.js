@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { links } from './links'
 import { styled } from '@mui/material/styles'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import CustomButton from '../ui/button'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowScroll } from 'react-use'
@@ -25,6 +25,7 @@ const MainAppBar = styled(AppBar)(({ theme }) => ({
 }))
 
 const Navbar = () => {
+  const router = useRouter()
   const activePage = usePathname()
   const { y } = useWindowScroll()
   const navbarRef = useRef(null)
@@ -141,12 +142,11 @@ const Navbar = () => {
             <CustomButton
               color={
                 activePage == '/'
-                  ? isScrolling
-                    ? 'dark'
-                    : 'light'
+                  ? isScrolling ? 'dark' : 'light'
                   : 'dark'
               }
               variant="contained"
+              onClick={() => router.push('/login')}
             >
               Sign In
             </CustomButton>

@@ -1,4 +1,4 @@
-import { Avatar, Box, Grid, Link, Typography } from '@mui/material'
+import { Avatar, Box, Divider, Grid, Link as MuiLink, Typography } from '@mui/material'
 import React from 'react'
 import { HeaderTitle } from '../section-header'
 import Image from 'next/image'
@@ -12,7 +12,20 @@ const socialMedia = [
   'ic:twotone-whatsapp',
 ]
 
-const StyledLink = styled(Link)(({ theme }) => ({
+const FooterWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+  gap: '1rem',
+  padding: '0 2rem',
+  backgroundColor: theme.palette.secondary.dark,
+  color: theme.palette.primary.light,
+  [theme.breakpoints.down('sm')]: {
+    padding: '0 1rem',
+  }
+}))
+
+const StyledLink = styled(MuiLink)(({ theme }) => ({
   display: 'flex',
   gap: '0.7rem',
   textDecoration: 'none',
@@ -20,6 +33,26 @@ const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.primary.light,
   '&:hover': {
     color: theme.palette.primary.main,
+  }
+}))
+
+const LinkWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  [theme.breakpoints.down('sm')]: {
+    justifyContent: 'flex-start',
+  }
+}))
+
+const FlexWraper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '0.5rem 0 2rem 0',
+  width: '100%',
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    gap: '1.5rem',
   }
 }))
 
@@ -45,23 +78,16 @@ const FooterSection = ({ title, direction, children }) => {
 
 const Footer = () => {
   return (
-    <Box sx={{
-      display: 'flex',
-      alignItems: 'center',
-      px: 4,
-      py: 8,
-      bgcolor: 'secondary.dark',
-      color: 'primary.light'
-    }}>
-      <Grid container spacing={2} rowSpacing={{ xs: 4, md: 2 }}>
+    <FooterWrapper>
+      <Grid sx={{ pt: 6, pb: 3 }} container spacing={2} rowSpacing={{ xs: 4, md: 2 }}>
         <Grid item xs={12} md={4}>
           <FooterSection title='get the app' direction='row'>
-            <Link href='/'>
+            <MuiLink href='/'>
               <Image src='/images/google-play-button.svg' alt='play store' width={150} height={50} />
-            </Link>
-            <Link href='/'>
+            </MuiLink>
+            <MuiLink href='/'>
               <Image src='/images/app-store-image.svg' alt='app store' width={150} height={50} />
-            </Link>
+            </MuiLink>
           </FooterSection>
         </Grid>
         <Grid item xs={12} md={8}>
@@ -82,7 +108,7 @@ const Footer = () => {
             <Grid item xs={12} md={4}>
               <FooterSection title='social media' direction='row'>
                 {socialMedia.map((social, index) => (
-                  <Link href='/' key={index}>
+                  <MuiLink href='/' key={index}>
                     <Avatar
                       sizes='small'
                       sx={{
@@ -96,14 +122,35 @@ const Footer = () => {
                       }}>
                       <Icon icon={social} height='1.3rem' />
                     </Avatar>
-                  </Link>
+                  </MuiLink>
                 ))}
               </FooterSection>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Box>
+      <Divider sx={{ width: '100%', bgcolor: 'rgba(255, 255, 255, 0.3)' }} />
+      <FlexWraper>
+        <Image
+          src='/images/ysgwhite.svg'
+          alt='Yachtsetgo Logo'
+          width={150}
+          height={45}
+          style={{
+            objectFit: 'cover',
+          }} />
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <Icon icon="ph:copyright" />
+          <Typography sx={{ fontSize: '0.9rem', letterSpacing: '1px' }}>
+            {new Date().getFullYear()}{' '}
+            YachtSetGo All Rights Reserved
+          </Typography>
+        </Box>
+        <LinkWrapper>
+          <StyledLink style={{ fontSize: '0.9rem', letterSpacing: '1px' }} href='/privacy-policy'>Privacy Policy</StyledLink>
+        </LinkWrapper>
+      </FlexWraper>
+    </FooterWrapper>
   )
 }
 
