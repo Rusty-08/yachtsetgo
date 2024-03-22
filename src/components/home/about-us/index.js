@@ -1,4 +1,4 @@
-import { Avatar, Box, Grid, IconButton, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Grid, IconButton, Typography } from '@mui/material'
 import React from 'react'
 import { hightlights, services, testimonials } from './dummy-data';
 import { Icon } from '@iconify/react';
@@ -9,17 +9,30 @@ import Image from 'next/image';
 import { styled, useTheme } from '@mui/material/styles';
 import { SectionWrapper } from '../hero-slider';
 
-const aboutTheFirmPaging = (i) => {
+const aboutTheFirmPaging = () => {
   return (
-    <IconButton className='icon-dots' color='primary' sx={{ width: '2rem', height: '2rem', mx: 1 }}>
-      <Icon icon="mdi:dot" />
-    </IconButton>
+    <Box sx={{ width: '2rem', height: '2rem', mx: 1.5 }}>
+      <Avatar
+        className='icon-dots'
+        sx={{
+          color: 'text.disabled',
+          bgcolor: 'transparent',
+          transform: 'scale(0.7)',
+          transition: 'all 0.3s ease-in-out',
+        }}
+      >
+        <Icon icon="material-symbols-light:directions-boat-sharp" />
+      </Avatar>
+    </Box>
   )
 }
 
 const StyledSliderDots = styled(Box)(({ theme }) => ({
+  transform: 'translateY(0.5rem)',
   '& .slick-active .icon-dots': {
-    background: 'rgba(0, 0, 0, 0.05)',
+    background: 'rgba(0, 156, 194, 0.1)',
+    color: theme.palette.primary.main,
+    transform: 'scale(1) !important',
   },
 }))
 

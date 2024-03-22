@@ -5,7 +5,6 @@ import { Box, InputLabel, OutlinedInput } from '@mui/material'
 import CustomButton from '@/components/ui/button'
 import { StyledLink } from '@/components/footer'
 import { styled } from '@mui/material/styles';
-import { CustomImage } from '@/components/ui/image'
 
 const StyledLoginWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -18,6 +17,13 @@ const StyledLoginWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
 }))
 
+const LoginInput = ({ id, label, type }) => (
+  <>
+    <InputLabel htmlFor={id} sx={{ fontSize: '0.9rem' }}>{label}</InputLabel>
+    <OutlinedInput id={id} type={type} sx={{ mb: '1rem', borderRadius: 0, input: { height: '1rem' } }} />
+  </>
+)
+
 const Login = () => {
   return (
     <PagesWrapper>
@@ -25,10 +31,8 @@ const Login = () => {
       <Box sx={{ width: '100%', bgcolor: 'rgba(0, 156, 194, 0.1)', display: 'flex', justifyContent: 'center' }}>
         <StyledLoginWrapper>
           <HeaderTitle variant='h5' sx={{ mb: '1rem', color: 'secondary.dark' }}>Login</HeaderTitle>
-          <InputLabel htmlFor="username" sx={{ fontSize: '0.9rem' }}>Username</InputLabel>
-          <OutlinedInput id="username" sx={{ mb: '1rem', borderRadius: 0, input: { height: '1rem' } }} />
-          <InputLabel htmlFor="password" sx={{ fontSize: '0.9rem' }}>Password</InputLabel>
-          <OutlinedInput id="password" type="password" sx={{ mb: '1.5rem', borderRadius: 0, input: { height: '1rem' } }} />
+          <LoginInput id="username" label="Username" />
+          <LoginInput id="password" label="Password" type="password" />
           <CustomButton color='dark' variant='contained'>LOGIN</CustomButton>
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
             <StyledLink href='/login' sx={{ color: 'primary.main', fontSize: '0.9rem' }}>

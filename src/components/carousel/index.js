@@ -1,13 +1,12 @@
-import { Box, IconButton, Paper, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, IconButton, Typography } from '@mui/material'
+import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Image from 'next/image'
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Icon } from '@iconify/react'
 
-export const SliderOverlay = styled(Box)(({ theme }) => ({
+export const SliderOverlay = styled(Box)(() => ({
   position: 'absolute',
   inset: 0,
   display: 'flex',
@@ -21,7 +20,7 @@ export const SliderOverlay = styled(Box)(({ theme }) => ({
   gap: '1rem'
 }))
 
-const SliderArrow = styled(Box)(({ theme }) => ({
+const SliderArrow = styled(Box)(() => ({
   position: 'absolute',
   bottom: '5%',
   zIndex: 5,
@@ -40,7 +39,6 @@ const LeftArrow = styled(SliderArrow)(({ theme }) => ({
   left: '10%',
   [theme.breakpoints.down('sm')]: {
     left: '20%',
-    opacity: 1
   },
 }))
 
@@ -73,7 +71,7 @@ function CustomPrevArrow(props) {
 
 export const DefaultPaging = () => {
   return (
-    <Box sx={{ border: '1px solid red' }}>
+    <Box>
       <IconButton sx={{ width: '2rem', height: '2rem' }}>
         <Icon icon="mdi:dot" width='2em' />
       </IconButton>

@@ -24,6 +24,24 @@ const MainAppBar = styled(AppBar)(({ theme }) => ({
   }
 }))
 
+const getLinkColor = (activePage, linkRoute, isScrolling) => {
+  if (activePage === linkRoute) {
+    if (isScrolling || activePage !== '/') {
+      return 'rgb(0, 156, 194)';
+    }
+    return 'white';
+  }
+
+  if (activePage === '/') {
+    if (isScrolling) {
+      return 'rgba(47, 43, 61, 0.62)';
+    }
+    return 'rgba(255, 255, 255, 0.60)';
+  }
+
+  return 'rgba(47, 43, 61, 0.60)';
+}
+
 const Navbar = () => {
   const router = useRouter()
   const activePage = usePathname()
@@ -62,27 +80,14 @@ const Navbar = () => {
         alignItems: 'center',
         py: direction ? 4 : 0,
         flexDirection: direction ?? 'row'
-      }}
-      >
+      }}>
         {links.map(link => (
           <StyleLink
             style={{
-              color: // spagetthi pababa haha
+              color:
                 color
-                  ? activePage == link.route
-                    ? 'rgb(0, 156, 194)'
-                    : 'rgba(47, 43, 61, 0.62)'
-                  : activePage == link.route
-                    ? isScrolling
-                      ? 'rgb(0, 156, 194)'
-                      : activePage == '/'
-                        ? 'white'
-                        : 'rgb(0, 156, 194)'
-                    : activePage == '/'
-                      ? isScrolling
-                        ? 'rgba(47, 43, 61, 0.62)'
-                        : 'rgba(255, 255, 255, 0.60)'
-                      : 'rgba(47, 43, 61, 0.60)',
+                  ? activePage == link.route ? 'rgb(0, 156, 194)' : 'rgba(47, 43, 61, 0.62)'
+                  : getLinkColor(activePage, link.route, isScrolling),
             }}
             key={link.id}
             href={link.route}
@@ -92,7 +97,7 @@ const Navbar = () => {
         ))}
         <CustomButton
           color={
-            activePage == '/'
+            activePage === '/'
               ? isScrolling ? 'dark' : 'light'
               : 'dark'
           }

@@ -4,6 +4,7 @@ import { HeaderTitle } from '../section-header'
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
 import { styled } from '@mui/material/styles';
+import Link from 'next/link';
 
 const socialMedia = [
   'ri:facebook-fill',
@@ -59,7 +60,7 @@ const FlexWraper = styled(Box)(({ theme }) => ({
 const Contact = ({ icon, children, alignment = 'center' }) => {
   return (
     <StyledLink sx={{ alignItems: alignment }} href='/'>
-      <Icon style={{ flexShrink: 0 }} icon={icon} height='1.4rem' />
+      <Icon style={{ flexShrink: 0, marginTop: alignment == 'flex-start' ? '0.2rem' : 0 }} icon={icon} height='1.4rem' />
       <Typography sx={{ letterSpacing: '1px' }}>{children}</Typography>
     </StyledLink>
   )
@@ -131,14 +132,16 @@ const Footer = () => {
       </Grid>
       <Divider sx={{ width: '100%', bgcolor: 'rgba(255, 255, 255, 0.3)' }} />
       <FlexWraper>
-        <Image
-          src='/landingassets/images/ysgwhite.svg'
-          alt='Yachtsetgo Logo'
-          width={150}
-          height={45}
-          style={{
-            objectFit: 'cover',
-          }} />
+        <Link href="/" style={{ display: 'flex' }}>
+          <Image
+            src='/landingassets/images/ysgwhite.svg'
+            alt='Yachtsetgo Logo'
+            width={150}
+            height={45}
+            style={{
+              objectFit: 'cover',
+            }} />
+        </Link>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Icon icon="ph:copyright" />
           <Typography sx={{ fontSize: '0.9rem', letterSpacing: '1px' }}>
